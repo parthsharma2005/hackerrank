@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int T;
+    scanf("%d", &T);
+
+    while (T--) {
+        long long a, b, x;
+        scanf("%lld %lld %lld", &a, &b, &x);
+
+        double val = pow((double)a, (double)b);
+
+        long long lower = floor(val / x) * x;
+        long long upper = ceil(val / x) * x;
+
+        
+        double diffLower = fabs(val - lower);
+        double diffUpper = fabs(val - upper);
+
+        if (diffLower < diffUpper) {
+            printf("%lld\n", lower);
+        } else if (diffUpper < diffLower) {
+            printf("%lld\n", upper);
+        } else {
+            printf("%lld\n", (lower < upper ? lower : upper));
+        }
+    }
+
+    return 0;
+}
+
