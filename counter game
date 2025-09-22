@@ -1,0 +1,15 @@
+string counterGame(long n) {
+    int count = 0;
+
+    while (n != 1) {
+        if ((n & (n - 1)) == 0) {
+            n >>= 1;  
+        } else {
+            long p = 1L << (63 - __builtin_clzl(n)); 
+            n -= p;
+        }
+        count++;
+    }
+
+    return (count % 2 == 1) ? "Louise" : "Richard";
+}
