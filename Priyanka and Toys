@@ -1,0 +1,20 @@
+int toys(vector<int> w) {
+    // Step 1: sort weights
+    sort(w.begin(), w.end());
+
+    int count = 0;  // number of containers
+    int i = 0;
+    int n = w.size();
+
+    while (i < n) {
+        int containerStart = w[i]; // first toy in new container
+        count++;
+
+        // Pack all toys that fit in this container (weight <= containerStart + 4)
+        while (i < n && w[i] <= containerStart + 4) {
+            i++;
+        }
+    }
+
+    return count;
+}
