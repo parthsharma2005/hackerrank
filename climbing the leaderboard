@@ -1,0 +1,22 @@
+vector<int> climbingLeaderboard(vector<int> ranked, vector<int> player) {
+    // Step 1: Remove duplicates and sort descending
+    vector<int> scores;
+    scores.push_back(ranked[0]);
+    for (int i = 1; i < ranked.size(); i++) {
+        if (ranked[i] != ranked[i-1]) {
+            scores.push_back(ranked[i]);
+        }
+    }
+
+    vector<int> result;
+    int i = scores.size() - 1; 
+
+    for (int p : player) {
+        while (i >= 0 && p >= scores[i]) {
+            i--;
+        }
+        result.push_back(i + 2);
+    }
+
+    return result;
+}
